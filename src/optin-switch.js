@@ -189,6 +189,7 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
         // Bind listeners
         input.addEventListener('click', onSwitchClicked);
         window.addEventListener('WonderPushEvent', onSwitchSubscriptionChangedFactory(input));
+        updateSwitchState(input, WonderPushSDK.Notification.getSubscriptionState());
       });
     };
 
@@ -202,6 +203,26 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
       return false;
     };
 
+    // Update the state of the switch according to a subscription state
+    var updateSwitchState = function(notifSwitch, subscriptionState) {
+        switch (subscriptionState) {
+          case WonderPushSDK.SubscriptionState.UNSUPPORTED:
+            notifSwitch.disabled = true;
+            notifSwitch.checked = false;
+            break;
+          case WonderPushSDK.SubscriptionState.UNDETERMINED:
+          case WonderPushSDK.SubscriptionState.NOT_SUBSCRIBED:
+          case WonderPushSDK.SubscriptionState.UNSUBSCRIBED:
+            notifSwitch.disabled = false;
+            notifSwitch.checked = false;
+            break;
+          case WonderPushSDK.SubscriptionState.SUBSCRIBED:
+            notifSwitch.disabled = false;
+            notifSwitch.checked = true;
+            break;
+        }
+    }
+
     // Respond to subscription state changes
     var onSwitchSubscriptionChangedFactory = function(notifSwitch) {
       return function(evt) {
@@ -211,22 +232,7 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
         // Note: This event is fired on each page and usually starts with the UNDETERMINED state.
         if (detail.name === 'subscription') {
           // Update the switch state in to reflect the actual subscription state
-          switch (detail.state) {
-            case WonderPushSDK.SubscriptionState.UNSUPPORTED:
-              notifSwitch.disabled = true;
-              notifSwitch.checked = false;
-              break;
-            case WonderPushSDK.SubscriptionState.UNDETERMINED:
-            case WonderPushSDK.SubscriptionState.NOT_SUBSCRIBED:
-            case WonderPushSDK.SubscriptionState.UNSUBSCRIBED:
-              notifSwitch.disabled = false;
-              notifSwitch.checked = false;
-              break;
-            case WonderPushSDK.SubscriptionState.SUBSCRIBED:
-              notifSwitch.disabled = false;
-              notifSwitch.checked = true;
-              break;
-          }
+          updateSwitchState(notifSwitch, detail.state);
         }
       };
     };
