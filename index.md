@@ -1,6 +1,6 @@
 WonderPush Web SDK plugin to present the user with a switch she can use to opt-in or opt-out to push notifications.
 
-Here is a screenshot of the default switch shown to the user if no option is given:
+Here is a screenshot of the default switch shown to the user with the wording proposed in the doc:
 
 <center>
 ![Screenshot of the plugin switch](screenshot.png)
