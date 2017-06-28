@@ -221,7 +221,7 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
             notifSwitch.checked = true;
             break;
         }
-    }
+    };
 
     // Respond to subscription state changes
     var onSwitchSubscriptionChangedFactory = function(notifSwitch) {
