@@ -5,9 +5,7 @@ WonderPush Web SDK plugin to present the user with a switch she can use to opt-i
 
 Here is a screenshot of the default switch shown to the user if no option is given:
 
-<center>
 ![Screenshot of the plugin switch](screenshot.png)
-</center>
 
 You can place it anywhere you see fit in your page.
 
