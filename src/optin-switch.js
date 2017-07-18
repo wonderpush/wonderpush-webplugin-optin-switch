@@ -3,7 +3,7 @@
  *
  * When loaded, the plugin looks for placeholder elements like the following, and fleshes them out to a beautiful switch:
  *
- *     <div id="wonderpush-subscription-switch"/>
+ *     <div id="wonderpush-subscription-switch"></div>
  *
  * In addition to being customizable using the plugin options, the switch can easily be customized using `data-` attributes.
  * Here is an example:
