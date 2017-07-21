@@ -31,8 +31,17 @@ WonderPush.init({
 
 You can find the reference of the options in the {@link OptinSwitch.Options} section of the reference.
 
+## Placing the switch in your page
+
+When loaded, the plugin looks for placeholder elements like the following, and fleshes them out to a beautiful switch:
+
+```xml
+<div class="wonderpush-subscription-switch"></div>
+```
+
 # Reference
 
 The available options are described in the {@link OptinSwitch.Options} section of the reference.
 
 The available API is described on the {@link OptinSwitch} class.
+You can also use the `data` attributes on the placeholder instead of the plugin's options to control its appearance.
