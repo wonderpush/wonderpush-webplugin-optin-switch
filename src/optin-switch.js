@@ -3,24 +3,28 @@
  *
  * When loaded, the plugin looks for placeholder elements like the following, and fleshes them out to a beautiful switch:
  *
- *     <div id="wonderpush-subscription-switch"></div>
+ * ```xml
+ * <div id="wonderpush-subscription-switch"></div>
+ * ```
  *
  * In addition to being customizable using the plugin options, the switch can easily be customized using `data-` attributes.
  * Here is an example:
  *
- *     <div id="wonderpush-subscription-switch"
- *       data-prepend="<div class=&amp;quot;some-wrapper&amp;quot;>"
- *       data-append="</div>"
- *       data-sentence="Receive the latest news by push notifications: "
- *       data-class="some-stylish-class"
- *       data-color-off="red"
- *       data-color-on="green"
- *       data-off="NO"
- *       data-on="YES"
- *       >
- *         <!-- Any content will be replaced with the switch, if push notifications are supported. -->
- *         Sorry, push notifications are not supported by your browser.
- *     </div>
+ * ```xml
+ * <div id="wonderpush-subscription-switch"
+ *   data-prepend="<div class=&amp;quot;some-wrapper&amp;quot;>"
+ *   data-append="</div>"
+ *   data-sentence="Receive the latest news by push notifications: "
+ *   data-class="some-stylish-class"
+ *   data-color-off="red"
+ *   data-color-on="green"
+ *   data-off="NO"
+ *   data-on="YES"
+ *   >
+ *     <!-- Any content will be replaced with the switch, if push notifications are supported. -->
+ *     Sorry, push notifications are not supported by your browser.
+ * </div>
+ * ```
  *
  * @class OptinSwitch
  * @param {external:WonderPushPluginSDK} WonderPushSDK - The WonderPush SDK instance provided automatically on intanciation.
