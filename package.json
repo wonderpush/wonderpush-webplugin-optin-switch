@@ -1,6 +1,6 @@
 {
   "name": "wonderpush-webplugin-optin-switch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WonderPush Web SDK plugin to present the user with a switch she can use to opt-in or opt-out to push notifications.",
   "main": "src/optin-switch.js",
   "repository": {
