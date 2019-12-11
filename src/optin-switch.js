@@ -88,8 +88,8 @@
  *
  *   Available colors:
  *
- *   * `grey` or `gray` - the default.
- *   * `red`
+ *   * `blue` - the default.
+ *   * `green`
  *
  * @property {string} [colorOff]
  *   Name of a predefined color to use for the OFF state.
@@ -98,8 +98,8 @@
  *
  *   Available colors:
  *
- *   * `blue` - the default.
- *   * `green`
+ *   * `grey` or `gray` - the default.
+ *   * `red`
  */
 /**
  * The WonderPush JavaScript SDK instance.
