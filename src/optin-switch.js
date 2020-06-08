@@ -113,6 +113,11 @@
  * @see {@link https://wonderpush.github.io/wonderpush-javascript-sdk/latest/WonderPushPluginSDK.html#.TriggersConfig|WonderPush JavaScript Plugin SDK triggers configuration reference}
  */
 WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
+    // Do not show anything on unsupported browsers.
+    if (WonderPushSDK.Notification.getSubscriptionState() === WonderPushSDK.SubscriptionState.UNSUPPORTED) {
+      return;
+    }
+
     WonderPushSDK.loadStylesheet('style.css');
 
     var subscriptionSwitchElement = null;
