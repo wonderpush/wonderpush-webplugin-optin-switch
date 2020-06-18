@@ -114,8 +114,10 @@
  */
 WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
     // Do not show anything on unsupported browsers.
-    if (WonderPushSDK.Notification.getSubscriptionState() === WonderPushSDK.SubscriptionState.UNSUPPORTED) {
-      return;
+    if (!WonderPushSDK.isNativePushNotificationSupported()) {
+      return {
+        setupSubscriptionSwitch: function () {},
+      };
     }
 
     WonderPushSDK.loadStylesheet('style.css');
