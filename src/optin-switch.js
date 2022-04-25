@@ -210,7 +210,13 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
       var newChecked = notifSwitch.checked;
       event.stopPropagation();
       event.preventDefault();
-      WonderPushSDK.setNotificationEnabled(newChecked, event);
+      WonderPushSDK.setNotificationEnabled(newChecked, event).catch(function(error) {
+        if (error instanceof WonderPush.Errors.UserCancellationError || error instanceof WonderPush.Errors.PermissionError) {
+          console.warn(error);
+          return;
+        }
+        console.error(error);
+      });
       return false;
     };
 
