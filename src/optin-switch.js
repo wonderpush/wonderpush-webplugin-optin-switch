@@ -179,6 +179,7 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
         var label = document.createElement('LABEL');
         label.classList.add(switchClassPrefix+'switch');
         label.className += ' ' + (switchEl.dataset.class || cssClass);
+        label.style.position = 'relative';
         if (switchEl.dataset.colorOn  || colorOn ) label.classList.add(switchClassPrefix+'switch-on-'  + (switchEl.dataset.colorOn  || colorOn ));
         if (switchEl.dataset.colorOff || colorOff) label.classList.add(switchClassPrefix+'switch-off-' + (switchEl.dataset.colorOff || colorOff));
         var input = document.createElement('INPUT');
@@ -197,10 +198,33 @@ WonderPush.registerPlugin('optin-switch', function(WonderPushSDK, options) {
         wrapper.appendChild(sentenceSpan);
         wrapper.appendChild(label);
 
+        // Create help
+        var help = document.createElement('div');
+        help.style.width = '280px';
+        help.style.height = '200px';
+        help.style.backgroundImage = 'url(https://cdn.by.wonderpush.com/plugins/optin-bell/1.0.0/allow-notifications.jpg)';
+        help.style.backgroundSize = 'contain';
+        help.style.backgroundRepeat = 'no-repeat';
+        help.style.position = 'absolute';
+        help.style.display = 'none';
+        var altitude = label.getBoundingClientRect().top + window.scrollY;
+        help.style.bottom = altitude > 200 ? '30px' : undefined;
+        help.style.border = '1px solid #ccc';
+        help.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
+        label.appendChild(help);
+
         // Bind listeners
         input.addEventListener('click', onSwitchClicked);
         window.addEventListener('WonderPushEvent', onSwitchSubscriptionChangedFactory(input));
         updateSwitchState(input, WonderPushSDK.Notification.getSubscriptionState());
+        label.addEventListener('mouseover', function() {
+          if (WonderPushSDK.Notification.getSubscriptionState() === WonderPushSDK.SubscriptionState.DENIED) {
+            help.style.display = '';
+          }
+        });
+        label.addEventListener('mouseout', function() {
+          help.style.display = 'none';
+        });
       });
     };
 
